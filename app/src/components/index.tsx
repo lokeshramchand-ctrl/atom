@@ -1,5 +1,7 @@
 "use client"
 
+import BarChart from "../components/features/BarChart"
+import Tables from "../components/features/Table"
 export default function IndexMain() {
     return (
         <section className="min-h-screen flex items-center justify-center px-6">
@@ -9,6 +11,8 @@ export default function IndexMain() {
                         <h1 className="text-xl font-bold">AtomityComponent</h1>
                     </div>
                 </header>
+                <BarChart />
+                <Tables />
             </div>
         </section>
 
