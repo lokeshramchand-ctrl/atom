@@ -6,7 +6,7 @@ export default function IndexMain() {
             <div className="max-w-5xl w-full bg-bgCard border border-borderCard rounded-xl p-10">
                 <header className="flex justify-between items-start mb-10">
                     <div>
-                        <h1 className="text-xl font-bold">Atomity Dashboard Component</h1>
+                        <h1 className="text-xl font-bold">AtomityComponent</h1>
                     </div>
                 </header>
             </div>
