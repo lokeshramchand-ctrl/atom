@@ -6,8 +6,7 @@ export default function BarChart({ data }: { data: any[] }) {
                 {data.map((item) => {
                     const height = (item.cost / max) * 100
                     return (
-                        <div key={item.name} className="flex flex-col items-center justify-end flex-1">
-                            <div
+<div key={item.name} className="flex flex-col items-center justify-end flex-1 h-full">                            <div
                                 style={{ height: `${height}%` }}
                                 className="bar w-full max-w-[60px] bg-gradient-to-br from-accentStart to-accentEnd rounded-t-md origin-bottom"
                             />
