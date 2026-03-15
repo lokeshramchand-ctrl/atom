@@ -1,29 +1,54 @@
-export default function Tables() {
+export default function Tables({ data }: { data: any[] }) {
 
-    const data = [
-        { name: "Cluster A", cost: 9000, efficiency: 94 },
-        { name: "Cluster B", cost: 7000, efficiency: 88 },
-        { name: "Cluster C", cost: 6000, efficiency: 96 },
-        { name: "Cluster D", cost: 8000, efficiency: 90 }
-    ]
     return (
+
         <table className="w-full text-left">
+
             <thead>
-                <tr className="text-textMuted text-xs uppercase">
+
+                <tr className="text-xs uppercase text-textMuted">
+
                     <th>Cluster</th>
-                    <th>Total</th>
+                    <th>CPU</th>
+                    <th>RAM</th>
+                    <th>Storage</th>
+                    <th>Network</th>
+                    <th>GPU</th>
                     <th>Efficiency</th>
+                    <th>Total</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
-                {data.map(d => (
+
+                {data.map((d) => (
                     <tr key={d.name} className="border-b border-white/5">
-                        <td className="py-3">{d.name}</td>
-                        <td>${d.cost}</td>
-                        <td>{d.efficiency}%</td>
+
+                        <td className="py-4 font-semibold">{d.name}</td>
+
+                        <td>${Math.round(d.cost * 0.35)}</td>
+                        <td>${Math.round(d.cost * 0.22)}</td>
+                        <td>${Math.round(d.cost * 0.08)}</td>
+                        <td>${Math.round(d.cost * 0.12)}</td>
+                        <td>${Math.round(d.cost * 0.15)}</td>
+
+                        <td>
+                            <span className="px-3 py-1 rounded-full text-xs bg-teal-400/20 text-teal-300">
+                                {d.efficiency}%
+                            </span>
+                        </td>
+
+                        <td className="font-bold bg-gradient-to-r from-accentStart to-accentEnd bg-clip-text text-transparent">
+                            ${d.cost}
+                        </td>
+
                     </tr>
                 ))}
+
             </tbody>
+
         </table>
 
     )
