@@ -10,11 +10,10 @@
         --text-muted: #737373;
         --border-subtle: rgba(0, 0, 0, 0.12);
         --hover-bg: rgba(0, 0, 0, 0.04);
-        --chart-bar-via: rgba(16, 185, 129, 0.12);
-        --chart-bar-to: rgba(16, 185, 129, 0.34);
-        --chart-bar-hover: rgba(5, 150, 105, 0.58);
-        --chart-top: rgba(4, 120, 87, 0.9);
-        --chart-glow: rgba(16, 185, 129, 0.45);
+        --chart-bar-via: rgba(0, 0, 0, 0.03);
+        --chart-bar-to: rgba(0, 0, 0, 0.12);
+        --chart-bar-hover: rgba(0, 0, 0, 0.2);
+        --chart-top: rgba(0, 0, 0, 0.3);
     }
 
     .dark {
@@ -24,11 +23,10 @@
         --text-muted: #8A8A8A;
         --border-subtle: rgba(255, 255, 255, 0.15);
         --hover-bg: rgba(255, 255, 255, 0.06);
-        --chart-bar-via: rgba(52, 211, 153, 0.16);
-        --chart-bar-to: rgba(16, 185, 129, 0.46);
-        --chart-bar-hover: rgba(16, 185, 129, 0.76);
-        --chart-top: rgba(110, 231, 183, 0.95);
-        --chart-glow: rgba(52, 211, 153, 0.7);
+        --chart-bar-via: rgba(255, 255, 255, 0.03);
+        --chart-bar-to: rgba(255, 255, 255, 0.12);
+        --chart-bar-hover: rgba(255, 255, 255, 0.2);
+        --chart-top: rgba(255, 255, 255, 0.4);
     }
 
     body {
@@ -38,9 +36,22 @@
         -webkit-font-smoothing: antialiased;
         transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+    /* ACCESSIBILITY: Reduced Motion Override */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        ::before,
+        ::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
 }
 
 @layer components {
+    /* (Keep existing .premium-card-wrapper, .premium-card, etc. from previous iteration) */
     .premium-card-wrapper {
         container-type: inline-size;
         container-name: main-card;
@@ -81,7 +92,8 @@
         block-size: 100%;
     }
 
-    .chart-container:has(.chart-node:hover) .chart-node:not(:hover) {
+    .chart-container:has(.chart-node:hover) .chart-node:not(:hover),
+    .chart-container:has(.chart-node:focus-visible) .chart-node:not(:focus-visible) {
         opacity: 0.25;
         filter: grayscale(100%);
         transition: opacity 0.4s ease, filter 0.4s ease;
@@ -96,12 +108,7 @@
     }
 
     @container main-card (max-width: 600px) {
-        .hide-on-mobile {
-            display: none;
-        }
-        
-        .table-cell-fluid {
-            padding-inline: 0.75rem;
-        }
+        .hide-on-mobile { display: none; }
+        .table-cell-fluid { padding-inline: 0.75rem; }
     }
 }

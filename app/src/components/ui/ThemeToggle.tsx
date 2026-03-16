@@ -18,7 +18,8 @@ export function ThemeToggle() {
     return (
         <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="text-xs font-mono uppercase tracking-widest text-textMuted hover:text-textMain transition-colors border border-borderSubtle px-3 py-1.5 rounded-full"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            className="text-xs font-mono uppercase tracking-widest text-textMuted hover:text-textMain transition-colors border border-borderSubtle px-3 py-1.5 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-textMain focus-visible:ring-offset-2 focus-visible:ring-offset-bgPrimary"
         >
             {theme === "dark" ? "Light" : "Dark"}
         </button>
