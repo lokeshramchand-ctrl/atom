@@ -2,19 +2,97 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
---color-bg-primary:#050505;
---color-bg-card:rgba(18,18,20,0.65);
---color-border-card:rgba(255,255,255,0.06);
---color-accent-start:#7C3AED;
---color-accent-end:#2DD4BF;
---color-text-main:#FAFAFA;
---color-text-muted:#A1A1AA;
+@layer base {
+  :root {
+    --bg-primary: #000000;
+    --bg-card: #0A0A0A;
+    --text-main: #FFFFFF;
+    --text-muted: #737373;
+    /* color-mix() for dynamic, mathematically perfect transparencies */
+    --border-subtle: color-mix(in srgb, var(--text-main) 10%, transparent);
+    --hover-bg: color-mix(in srgb, var(--text-main) 2%, transparent);
+  }
 
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
-body{
-background:var(--color-bg-primary);
-color:var(--color-text-main);
-font-family:system-ui;
+@layer components {
+  /* CONTAINER QUERIES & LOGICAL PROPERTIES */
+  .premium-card-wrapper {
+    /* Establishes the container for @container queries */
+    container-type: inline-size;
+    container-name: main-card;
+    inline-size: 100%;
+    max-inline-size: 1050px;
+  }
+
+  .premium-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    
+    /* clamp() for fluid padding based on container width */
+    padding-inline: clamp(1.25rem, 5cqi, 3.5rem);
+    padding-block: clamp(1.5rem, 6cqi, 3.5rem);
+
+    /* NATIVE CSS NESTING */
+    & header {
+      /* Logical property instead of margin-bottom */
+      margin-block-end: clamp(2rem, 8cqi, 4rem);
+      border-bottom: 1px solid var(--border-subtle);
+      padding-block-end: 1.5rem;
+
+      & h1 {
+        /* Fluid typography */
+        font-size: clamp(1.25rem, 4cqi, 1.5rem);
+        letter-spacing: -0.02em;
+        color: var(--text-main);
+      }
+
+      & p {
+        color: var(--text-muted);
+        margin-block-start: 0.25rem;
+      }
+    }
+  }
+
+  /* :has() SELECTOR FOR PARENT-AWARE STYLING */
+  .chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    block-size: 100%;
+    
+    /* If any chart node inside is hovered, dim the others that are NOT hovered */
+    &:has(.chart-node:hover) .chart-node:not(:hover) {
+      opacity: 0.25;
+      filter: grayscale(100%);
+      transition: opacity 0.4s ease, filter 0.4s ease;
+    }
+  }
+
+  /* TABLE RESPONSIVENESS VIA CONTAINER QUERIES */
+  .table-wrapper {
+    container-type: inline-size;
+    container-name: data-table;
+    inline-size: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  /* When the card container is smaller than 600px (Mobile/Tablet) */
+  @container main-card (max-width: 600px) {
+    .hide-on-mobile {
+      display: none;
+    }
+    
+    .table-cell-fluid {
+      padding-inline: 0.75rem;
+    }
+  }
 }
