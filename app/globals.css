@@ -10,10 +10,11 @@
         --text-muted: #737373;
         --border-subtle: rgba(0, 0, 0, 0.12);
         --hover-bg: rgba(0, 0, 0, 0.04);
-        --chart-bar-via: rgba(0, 0, 0, 0.03);
-        --chart-bar-to: rgba(0, 0, 0, 0.12);
-        --chart-bar-hover: rgba(0, 0, 0, 0.2);
-        --chart-top: rgba(0, 0, 0, 0.3);
+        --chart-bar-via: rgba(16, 185, 129, 0.12);
+        --chart-bar-to: rgba(16, 185, 129, 0.34);
+        --chart-bar-hover: rgba(5, 150, 105, 0.58);
+        --chart-top: rgba(4, 120, 87, 0.9);
+        --chart-glow: rgba(16, 185, 129, 0.45);
     }
 
     .dark {
@@ -23,10 +24,11 @@
         --text-muted: #8A8A8A;
         --border-subtle: rgba(255, 255, 255, 0.15);
         --hover-bg: rgba(255, 255, 255, 0.06);
-        --chart-bar-via: rgba(255, 255, 255, 0.03);
-        --chart-bar-to: rgba(255, 255, 255, 0.12);
-        --chart-bar-hover: rgba(255, 255, 255, 0.2);
-        --chart-top: rgba(255, 255, 255, 0.4);
+        --chart-bar-via: rgba(52, 211, 153, 0.16);
+        --chart-bar-to: rgba(16, 185, 129, 0.46);
+        --chart-bar-hover: rgba(16, 185, 129, 0.76);
+        --chart-top: rgba(110, 231, 183, 0.95);
+        --chart-glow: rgba(52, 211, 153, 0.7);
     }
 
     body {

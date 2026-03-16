@@ -8,13 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bgPrimary: "var(--color-bg-primary)",
-        bgCard: "var(--color-bg-card)",
-        borderCard: "var(--color-border-card)",
-        accentStart: "var(--color-accent-start)",
-        accentEnd: "var(--color-accent-end)",
-        textMain: "var(--color-text-main)",
-        textMuted: "var(--color-text-muted)"
+        bgPrimary: "var(--bg-primary)",
+        bgCard: "var(--bg-card)",
+        borderSubtle: "var(--border-subtle)",
+        textMain: "var(--text-main)",
+        textMuted: "var(--text-muted)",
+        borderCard: "var(--border-subtle)",
+        accentStart: "var(--chart-bar-to)",
+        accentEnd: "var(--chart-top)"
       }
     }
   },

@@ -36,14 +36,11 @@ export default function IndexMain() {
 
     return (
         <section ref={sectionRef} className="w-full flex items-center justify-center px-4 md:px-6 py-12 opacity-0">
-            {/* Added w-full and max-w-[1050px] here to enforce width */}
             <div className="premium-card-wrapper w-full max-w-[1050px]">
-                {/* Added w-full here to prevent flex shrinking */}
                 <div className="premium-card w-full">
                     <header className="flex justify-between items-start">
                         <div>
-                            <h1 className="anim-header font-medium">Atomity Infrastructure</h1>
-                            <p className="anim-header text-sm tracking-wide">Live cluster expenditure</p>
+                            <h1 className="anim-header font-medium">Atomity</h1>
                         </div>
                         <div className="theme-toggle-anim">
                             <ThemeToggle />
