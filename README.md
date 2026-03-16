@@ -25,6 +25,10 @@ Once I established a visual direction, I built the feature iteratively:
 The guiding principle was to start simple with structure, then gradually layer in **data, animation, and premium polish**.
 
 ---
+## Screenshots 
+
+![alt text](image.png)
+![alt text](image-1.png)
 
 ## Feature Chosen And Why
 
@@ -162,5 +166,4 @@ Given more time, I would expand the feature set by adding:
 
 ## Deployment
 
-This project is deployed automatically via **Vercel** using their GitHub integration.
-
+This project is deployed automatically via **Vercel** 
