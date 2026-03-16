@@ -6,7 +6,7 @@ import Tables from "../components/features/Table"
 import { useDashData } from "../hooks/useData"
 export default function IndexMain() {
 
-    const { data, loading } = useDashData()
+    const { data, loading, error } = useDashData()
     const sectionRef = useRef<HTMLElement>(null)
     useEffect(() => {
         if (!sectionRef.current || loading) return
@@ -29,9 +29,15 @@ export default function IndexMain() {
             </section>
         )
     }
+    if (error) {
+        return (
+            <section className="min-h-screen flex items-center justify-center">
+                <div className="text-red-400">Failed to load cluster data</div>
+            </section>
+        )
+    }
     return (
         <section ref={sectionRef} className="min-h-screen flex items-center justify-center px-6 opacity-0">            <div className="max-w-5xl w-full bg-bgCard border border-borderCard rounded-xl p-10">
-           <div id="main-card" className="max-w-5xl w-full bg-bgCard border border-borderCard rounded-xl p-10"></div>
             <header className="flex justify-between items-start mb-10">
                 <div>
                     <h1 className="text-xl font-bold">Atomity Component</h1>
