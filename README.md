@@ -89,20 +89,29 @@ These tokens are mapped to the `:root` pseudo-class for light mode and dynamical
 
 ## Data Fetching And Caching
 
-Data is fetched using a custom client-side hook located at `src/hooks/useData.ts`.
+Data is fetched using a custom client-side hook located at `app/src/hooks/useData.ts`, powered by **TanStack Query**.
 
 The lifecycle works as follows:
 
 * Fetch raw product data from `https://dummyjson.com/products?limit=4` on mount.
 * Transform the generic response into cluster-specific dashboard metrics.
 * Generate derived fields like `name`, `cost`, and `efficiency`.
-* Expose `data`, `loading`, and `error` states back to the React UI.
+* Expose normalized `data`, `loading`, and `error` states back to the React UI through `useDashData()`.
 
 ### Caching Behavior
 
-* The fetched data is stored in the component state for the lifetime of the page.
-* A full page refresh triggers a fresh network request and transformation step.
-* This approach keeps the data flow straightforward for a single-screen prototype. For a production environment, I would scale this up using a library like **React Query** or **Next.js Route Handlers** for robust caching and background revalidation.
+Caching is now handled by a shared QueryClient in `app/src/components/providers/QueryProvider.tsx`:
+
+* `staleTime: 5 minutes` keeps data fresh during short revisits and avoids redundant re-fetches.
+* `gcTime: 10 minutes` keeps cached data in memory for fast navigation back to the dashboard.
+* `refetchOnWindowFocus: false` prevents noisy background refetches while switching tabs.
+* `retry: 1` provides a small resilience buffer for transient network errors.
+
+What this means in practice:
+
+* First visit: network request + loading state.
+* Revisit within cache window: instant data from cache with no extra request.
+* Hard refresh: cache resets and data is fetched again.
 
 ---
 
