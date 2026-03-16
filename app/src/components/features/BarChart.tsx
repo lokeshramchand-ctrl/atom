@@ -47,7 +47,7 @@ export default function BarChart({ data }: { data: any[] }) {
                                     style={{ height: `${height}%` }}
                                     className="relative w-8 border-x border-[var(--border-subtle)] bg-gradient-to-t from-transparent via-[var(--chart-bar-via)] to-[var(--chart-bar-to)] backdrop-blur-[2px] transition-colors duration-500 group-hover:border-[var(--text-muted)] group-hover:to-[var(--chart-bar-hover)] group-focus-within:border-[var(--text-main)] group-focus-within:to-[var(--chart-bar-hover)] sm:w-12"
                                 >
-                                    <div className="absolute top-0 left-0 h-[2px] w-full bg-[var(--chart-top)] transition-all duration-500 group-hover:bg-[var(--text-main)] group-hover:shadow-[0_0_15px_rgba(0,0,0,0.25)] group-focus-within:bg-[var(--text-main)] group-focus-within:shadow-[0_0_15px_rgba(0,0,0,0.25)] dark:group-hover:shadow-[0_0_15px_rgba(255,255,255,0.7)] dark:group-focus-within:shadow-[0_0_15px_rgba(255,255,255,0.7)]" />
+                                    <div className="absolute top-0 left-0 h-[2px] w-full bg-[var(--chart-top)] transition-all duration-500 group-hover:bg-[var(--chart-top)] group-hover:shadow-[0_0_18px_var(--chart-glow)] group-focus-within:bg-[var(--chart-top)] group-focus-within:shadow-[0_0_18px_var(--chart-glow)]" />
                                 </div>
 
                                 <div className="mt-6 whitespace-nowrap text-[10px] uppercase tracking-widest text-[color:var(--text-muted)] transition-colors duration-300 group-hover:text-[color:var(--text-main)] group-focus-within:text-[color:var(--text-main)]">
